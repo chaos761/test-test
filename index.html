@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Shop Mate</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-light-base: 240 249 255; /* sky-50 */
+        --color-light-shadow-dark: 210 225 240;
+        --color-light-shadow-light: 255 255 255;
+
+        --color-primary-50: 240 249 255; --color-primary-100: 224 242 254; --color-primary-200: 186 230 253; --color-primary-300: 125 211 252; --color-primary-400: 56 189 248; --color-primary-500: 14 165 233; --color-primary-600: 2 132 199; --color-primary-700: 3 105 161; --color-primary-800: 7 89 133; --color-primary-900: 12 74 110; --color-primary-950: 8 51 68;
+        --color-gray-50: 249 250 251; --color-gray-100: 243 244 246; --color-gray-200: 229 231 235; --color-gray-300: 209 213 219; --color-gray-400: 156 163 175; --color-gray-500: 107 114 128; --color-gray-600: 75 85 99; --color-gray-700: 55 65 81; --color-gray-800: 31 41 55; --color-gray-900: 17 24 39;
+        --color-red-500: 239 68 68;
+        --color-green-500: 16 185 129;
+        --color-yellow-500: 245 158 11;
+      }
+      body {
+        background-color: rgb(var(--color-light-base));
+        color: rgb(var(--color-gray-800));
+        transition: background-color 0.3s ease;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.14.0",
+    "recharts": "https://esm.sh/recharts@^3.1.2",
+    "jspdf": "https://esm.sh/jspdf@^2.5.1",
+    "vanta/": "https://aistudiocdn.com/vanta@^0.5.24/",
+    "three": "https://aistudiocdn.com/three@^0.179.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <!-- Background SVG -->
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-10 pointer-events-none">
+        <svg width="600" height="600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-gray-800">
+            <defs>
+                <g id="spanner">
+                    <path d="M15.22 6.31L13.78 4.88C13.29 4.39 12.53 4.2 11.83 4.45L9.91 5.03L12.03 7.15L12.61 5.23C12.86 4.53 13.05 4.72 13.54 5.22L14.97 6.65C15.47 7.14 16.23 7.33 16.93 7.08L18.85 6.5L16.73 4.38L18.65 3.8C19.35 3.55 19.95 3.99 19.95 4.75V6.25C19.95 6.91 19.58 7.48 19 7.67L17.5 8.17L15.22 6.31Z" fill="currentColor"/>
+                    <path d="M12.03 7.15L2.44 16.74C1.66 17.52 1.66 18.79 2.44 19.57L4.44 21.57C5.22 22.35 6.49 22.35 7.27 21.57L16.86 11.98L12.03 7.15Z" fill="currentColor"/>
+                </g>
+            </defs>
+            <use href="#spanner" transform="rotate(45 12 12)"/>
+            <use href="#spanner" transform="rotate(-45 12 12) scale(-1, 1)"/>
+        </svg>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
